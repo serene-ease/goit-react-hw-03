@@ -1,13 +1,24 @@
 import { useState } from 'react';
-import contacts from './testApp.json';
+import {ContactList} from '../ContactList/ContactList';
+import initialContacts from './testApp.json'
 
-export const App() => {
+
+export const App = () => {
+  const [contacts, setContacts] = useState(initialContacts);
+
+  const eraseContact = contactId => {
+    setContacts(prevContacts => {return prevContacts.filter(contact => contact.id !== contactId)}
+      )
+  };
+
+  // const actualContacts = () => {contacts.filter(contact => contact.contactname.toLowerCase().includes())}
+
   return (
     <div>
       <h1>Phonebook</h1>
       {/* <ContactForm /> */}
       {/* <SearchBox /> */}
-      <ContactList items={contacts} />
+      <ContactList items={initialContacts} onDelete={eraseContact}/>
     </div>
   );
 }
