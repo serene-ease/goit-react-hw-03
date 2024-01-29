@@ -1,29 +1,39 @@
 import { useState } from 'react';
-import { ContactForm } from '../ContactForm/ContactForm';
-import { ContactList } from '../ContactList/ContactList';
-import { SearchBox } from '../SearchBox/SearchBox';
-
+////////////////////////
+import { ContactForm } from '../ContactForm/ContactForm.jsx';
+import { ContactList } from '../ContactList/ContactList.jsx';
+import { SearchBox } from '../SearchBox/SearchBox.jsx';
+////////////////////////
 //for test array
-import initialContacts from './testApp.json'
-
+import initialContacts from './testApp.json';
 
 export const App = () => {
   const [contacts, setContacts] = useState(initialContacts);
   const [contactsFilter, setContactsFilter] = useState('');
 
-  const eraseContact = contactId => {
-    setContacts(prevContacts => {return prevContacts.filter(contact => contact.contactId !== contactId)}
-      )
+  const addContact = newContact => {
+    setContacts(prevContacts => {
+        return [...prevContacts, newContact];
+      }
+    );
   };
-  const actualContacts = contacts.filter(item => 
-    item.contactname.toLowerCase().includes(contactsFilter.toLowerCase()))
+
+  const eraseContact = id => {
+    setContacts(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== id);
+    });
+  };
+
+  const actualContacts = contacts.filter(item =>
+    item.contactname.toLowerCase().includes(contactsFilter.toLowerCase())
+  );
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={contactsFilter} onChanging={setContactsFilter} />
-      <ContactList contacts={actualContacts} eraseContact={eraseContact}/>
+      <ContactList contacts={actualContacts} eraseContact={eraseContact} />
     </div>
   );
-}
+};
