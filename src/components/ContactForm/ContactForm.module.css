@@ -1,0 +1,38 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    padding: 10px;
+    /* border: 1px solid #111; */
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+.listItem {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .label {
+    margin-bottom: 5px;
+}
+
+.input{
+    padding: 10px;
+    border: 1px solid #111;
+    margin-bottom: 5px;
+}
+
+.error {
+    color: #F1041B;
+    width: 90%;
+}

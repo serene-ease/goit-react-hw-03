@@ -1,11 +1,11 @@
 import { Contact } from '../Contact/Contact';
-// import s from './ContactList.module.css'
+import s from './ContactList.module.css'
 
 export const ContactList = ({ contacts, eraseContact }) => {
   return (
-    <ul>
+    <ul className={s.list} >
       {contacts.map(contact => (
-        <li key={contact.id}>
+        <li className={s.listItem} key={contact.id}>
           <Contact contact={contact} eraseContact={eraseContact} />
         </li>
       ))}

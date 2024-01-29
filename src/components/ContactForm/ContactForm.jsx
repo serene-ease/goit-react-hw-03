@@ -1,15 +1,14 @@
-import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 
-// import style from '.ContactForm.module.css';
+import s from './ContactForm.module.css'
+
 
 export const ContactForm = ({ onAdd }) => {
   const formFields = [
-    { name: 'contactname', type: 'text', id: useId(), decor: 'Username' },
-    { name: 'number', type: 'tel', id: useId(), decor: 'Number' },
+    { name: 'contactname', type: 'text', id: nanoid(), decor: 'Username' },
+    { name: 'number', type: 'tel', id: nanoid(), decor: 'Number' },
   ];
 
   const validationSchema = Yup.object().shape({
@@ -31,18 +30,18 @@ export const ContactForm = ({ onAdd }) => {
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
         console.log(values);
-        onAdd({ id: nanoid(5), ...values });
+        onAdd({ id: nanoid(), ...values });
         actions.resetForm();
       }}
     >
-      <Form>
-        <ul>
+      <Form className={s.form}>
+        <ul className={s.list}>
           {formFields.map(curField => {
             return (
-              <li key={curField.id}>
-                <label htmlFor={curField.id}>{curField.decor}</label>
-                <Field name={curField.name} type={curField.type} id={curField.id} />
-                <ErrorMessage name={curField.name} component="span" />
+              <li className={s.listItem} key={curField.id}>
+                <label className={s.label} htmlFor={curField.id}>{curField.decor}</label>
+                <Field className={s.input} name={curField.name} type={curField.type} id={curField.id} />
+                <ErrorMessage className={s.error} name={curField.name} component="p" />
               </li>
             );
           })}

@@ -1,7 +1,21 @@
 .container {
     display: flex;
-    border: 2px solid black;
-    border-radius: 5px;
-    max-width: 250px;
-    padding: 10px 10px 10px 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+    padding: 10px;
+    border: 3px solid #111;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    height: 20px;
+    margin-left: auto;
+     
+  }
+  .icon {
+    margin-right: 5px;
 }

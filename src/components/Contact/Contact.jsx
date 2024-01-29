@@ -1,13 +1,14 @@
+import { FiPhone, FiUser } from "react-icons/fi";
 import s from '../Contact/Contact.module.css';
 
 export const Contact = ({ contact: { id, contactname, number }, eraseContact }) => {
   return (
     <div className={s.container}>
       <div>
-        <p>{contactname}</p>
-        <p>{number}</p>
+        <p><FiUser className={s.icon} />{contactname}</p>
+        <p><FiPhone className={s.icon} />{number}</p>
       </div>
-      <button onClick={() => eraseContact(id)}>Delete</button>
+      <button className={s.buttons} onClick={() => eraseContact(id)}>Delete</button>
     </div>
   );
 };
